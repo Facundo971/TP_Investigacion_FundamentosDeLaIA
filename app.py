@@ -77,7 +77,7 @@ if st.button("🚀 Ejecutar Inferencia y Evaluar Métricas"):
     col2.metric("Tiempo de Inferencia", f"{tiempo:.4f} s")
     col3.metric("Latencia Promedio", f"{(tiempo/len(y_test))*1000:.4f} ms")
     
-    # --- NUEVA SECCIÓN: Distribución del Tráfico Generado ---
+    # Distribución del Tráfico Generado
     st.subheader("📊 Distribución del Tráfico en el Dataset")
     conteo_trafico = df_completo['es_ataque'].value_counts().reset_index()
     conteo_trafico.columns = ['Tipo', 'Cantidad']
@@ -108,7 +108,7 @@ if st.button("🚀 Ejecutar Inferencia y Evaluar Métricas"):
     df_cm = pd.DataFrame(cm, index=["Normal (Real)", "Ataque (Real)"], columns=["Predicho Normal", "Predicho Ataque"])
     st.dataframe(df_cm, use_container_width=True)
     
-    # --- NUEVA SECCIÓN: Curva ROC y AUC ---
+    # Curva ROC y AUC
     st.subheader("📈 Curva ROC y Métrica AUC (Área Bajo la Curva)")
     fpr, tpr, thresholds = roc_curve(y_test, y_prob)
     roc_auc = auc(fpr, tpr)
